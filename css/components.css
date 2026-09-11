@@ -1,0 +1,209 @@
+/* ==========================================================================
+   ExploMonde — components.css
+   Composants : lien d'évitement, en-tête, formulaire, grille de cartes, pied.
+   Mobile First : tout s'empile par défaut, la grille et les flex se réorganisent
+   d'elles-mêmes (auto-fit, wrap) sans une seule media query de largeur.
+   ========================================================================== */
+
+/* --- Lien d'évitement : caché tant qu'il n'a pas le focus --------------- */
+.lien-evitement {
+  position: absolute;
+  left: var(--espace-3);
+  top: var(--espace-3);
+  z-index: 10;
+  padding: var(--espace-2) var(--espace-3);
+  background-color: var(--couleur-accent);
+  color: var(--couleur-accent-texte);
+  border-radius: var(--rayon-petit);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--transition);
+}
+
+.lien-evitement:focus {
+  transform: translateY(0);
+}
+
+/* --- En-tête ------------------------------------------------------------ */
+.entete {
+  background-color: var(--couleur-surface);
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.entete__interieur {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espace-2) var(--espace-4);
+  padding-block: var(--espace-3);
+}
+
+.entete__titre {
+  color: var(--couleur-accent-vif); /* > 24 px : 3:1 suffit, on garde la teinte de la maquette */
+}
+
+.nav__liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-3);
+}
+
+.nav__liste a {
+  color: var(--couleur-texte-faible);
+  text-decoration: none;
+  padding: var(--espace-1) 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav__liste a:hover,
+.nav__liste a:focus-visible {
+  color: var(--couleur-texte);
+  border-bottom-color: var(--couleur-accent);
+}
+
+/* --- Formulaire de recherche ------------------------------------------- */
+.recherche__formulaire {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--espace-3);
+  padding: var(--espace-4);
+  background-color: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-grand);
+  box-shadow: var(--ombre-carte);
+}
+
+.champ {
+  flex: 1 1 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-1);
+  margin: 0;
+}
+
+.champ--action {
+  flex: 0 0 auto;
+}
+
+.champ__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--couleur-texte-faible);
+}
+
+.champ__saisie {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--espace-2) var(--espace-3);
+  font: inherit;
+  color: var(--couleur-texte);
+  background-color: var(--couleur-fond);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-moyen);
+}
+
+.champ__saisie:focus-visible {
+  outline: none;
+  border-color: var(--couleur-accent);
+  box-shadow: var(--ombre-focus);
+}
+
+.bouton {
+  min-height: 44px;
+  padding: var(--espace-2) var(--espace-4);
+  font: inherit;
+  font-weight: 600;
+  color: var(--couleur-accent-texte);
+  background-color: var(--couleur-accent);
+  border: 1px solid transparent;
+  border-radius: var(--rayon-moyen);
+  cursor: pointer;
+  transition: filter var(--transition);
+}
+
+.bouton:hover {
+  filter: brightness(1.08);
+}
+
+.bouton:focus-visible {
+  outline: none;
+  box-shadow: var(--ombre-focus);
+}
+
+/* --- Zone de statut ----------------------------------------------------- */
+.statut {
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--couleur-texte-faible);
+}
+
+/* --- Grille de cartes : le cœur du responsive --------------------------- */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--carte-min), 1fr));
+  gap: var(--espace-3);
+}
+
+.carte {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--espace-4);
+  background-color: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-grand);
+  box-shadow: var(--ombre-carte);
+}
+
+.carte__drapeau {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-2);
+  margin-bottom: var(--espace-2);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.carte__code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--couleur-texte-faible);
+  padding: var(--espace-1) var(--espace-2);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon-petit);
+}
+
+.carte__infos {
+  margin: 0 0 var(--espace-3);
+  font-size: 0.9375rem;
+}
+
+.carte__infos dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--couleur-texte-faible);
+}
+
+.carte__infos dd {
+  margin: 0 0 var(--espace-2);
+}
+
+.carte__lien {
+  margin: auto 0 0;
+}
+
+/* --- Pied de page ------------------------------------------------------- */
+.pied {
+  padding-block: var(--espace-4);
+  border-top: 1px solid var(--couleur-bordure);
+  color: var(--couleur-texte-faible);
+  font-size: 0.875rem;
+}
+
+.pied p {
+  margin: 0;
+}

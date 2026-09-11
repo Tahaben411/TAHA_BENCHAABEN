@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExploMonde — Rechercher et explorer les pays du monde</title>
+  <meta name="description" content="ExploMonde : rechercher un pays, filtrer par région du monde et consulter sa capitale, sa région et sa population.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+  <header class="entete">
+    <div class="entete__interieur">
+      <h1 class="entete__titre">ExploMonde</h1>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="nav__liste">
+          <li><a href="#recherche">Recherche</a></li>
+          <li><a href="#resultats">Résultats</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenu" id="contenu">
+    <section class="recherche" id="recherche" aria-labelledby="titre-recherche">
+      <h2 class="titre-section" id="titre-recherche">Rechercher un pays</h2>
+
+      <form class="recherche__formulaire" role="search" action="#resultats" method="get">
+        <p class="champ">
+          <label class="champ__label" for="champ-pays">Nom du pays</label>
+          <input class="champ__saisie" type="search" id="champ-pays" name="pays" placeholder="Exemple : France" autocomplete="off">
+        </p>
+
+        <p class="champ">
+          <label class="champ__label" for="champ-region">Région du monde</label>
+          <select class="champ__saisie" id="champ-region" name="region">
+            <option value="">Toutes les régions</option>
+            <option value="Europe">Europe</option>
+            <option value="Africa">Afrique</option>
+            <option value="Americas">Amériques</option>
+            <option value="Asia">Asie</option>
+            <option value="Oceania">Océanie</option>
+          </select>
+        </p>
+
+        <p class="champ champ--action">
+          <button class="bouton" type="submit">Rechercher</button>
+        </p>
+      </form>
+    </section>
+
+    <section class="resultats" id="resultats" aria-labelledby="titre-resultats">
+      <h2 class="titre-section" id="titre-resultats">Résultats</h2>
+
+      <p class="statut" id="statut" role="status">3 pays trouvés pour la région « Europe ».</p>
+
+      <ul class="grille">
+        <li>
+          <article class="carte" aria-labelledby="pays-fr">
+            <p class="carte__drapeau"><span aria-hidden="true">🇫🇷</span> <span class="carte__code">FR</span></p>
+            <h3 class="carte__titre" id="pays-fr">France</h3>
+            <dl class="carte__infos">
+              <dt>Capitale</dt>
+              <dd>Paris</dd>
+              <dt>Région</dt>
+              <dd>Europe (Europe de l’Ouest)</dd>
+              <dt>Population</dt>
+              <dd>67 391 582 habitants</dd>
+            </dl>
+            <p class="carte__lien"><a href="#pays-fr">Consulter la fiche de la France</a></p>
+          </article>
+        </li>
+
+        <li>
+          <article class="carte" aria-labelledby="pays-de">
+            <p class="carte__drapeau"><span aria-hidden="true">🇩🇪</span> <span class="carte__code">DE</span></p>
+            <h3 class="carte__titre" id="pays-de">Allemagne</h3>
+            <dl class="carte__infos">
+              <dt>Capitale</dt>
+              <dd>Berlin</dd>
+              <dt>Région</dt>
+              <dd>Europe (Europe de l’Ouest)</dd>
+              <dt>Population</dt>
+              <dd>83 240 525 habitants</dd>
+            </dl>
+            <p class="carte__lien"><a href="#pays-de">Consulter la fiche de l’Allemagne</a></p>
+          </article>
+        </li>
+
+        <li>
+          <article class="carte" aria-labelledby="pays-es">
+            <p class="carte__drapeau"><span aria-hidden="true">🇪🇸</span> <span class="carte__code">ES</span></p>
+            <h3 class="carte__titre" id="pays-es">Espagne</h3>
+            <dl class="carte__infos">
+              <dt>Capitale</dt>
+              <dd>Madrid</dd>
+              <dt>Région</dt>
+              <dd>Europe (Europe du Sud)</dd>
+              <dt>Population</dt>
+              <dd>47 351 567 habitants</dd>
+            </dl>
+            <p class="carte__lien"><a href="#pays-es">Consulter la fiche de l’Espagne</a></p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="a-propos" id="a-propos" aria-labelledby="titre-a-propos">
+      <h2 class="titre-section" id="titre-a-propos">À propos</h2>
+      <p>ExploMonde est un explorateur de pays construit sans framework ni bibliothèque, en HTML valide, CSS Mobile First et modules ES. Les données proviendront de l’API publique restcountries.com.</p>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p>ExploMonde — projet fil rouge. Données : <a href="https://restcountries.com" rel="noopener">restcountries.com</a>.</p>
+  </footer>
+</body>
+</html>

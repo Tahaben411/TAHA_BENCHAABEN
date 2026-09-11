@@ -1,0 +1,105 @@
+/* ==========================================================================
+   ExploMonde — base.css
+   Style de base Mobile First : une seule colonne, aucune media query de largeur.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  line-height: var(--hauteur-ligne);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Titres : le h1 est fluide grâce à clamp(), pas de media query. */
+h1 {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: var(--taille-titre);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  margin: 0 0 var(--espace-3);
+  font-family: var(--police-titre);
+  font-size: var(--taille-sous-titre);
+  line-height: 1.2;
+}
+
+h3 {
+  margin: 0 0 var(--espace-2);
+  font-family: var(--police-titre);
+  font-size: 1.125rem;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 var(--espace-3);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--couleur-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Accessibilité : le focus reste toujours visible, au clavier comme à la souris. */
+:focus-visible {
+  outline: 2px solid var(--couleur-accent);
+  outline-offset: 2px;
+  border-radius: var(--rayon-petit);
+}
+
+/* Conteneur principal : une colonne sur mobile, centré et borné sur grand écran. */
+.contenu,
+.entete__interieur,
+.pied {
+  width: 100%;
+  max-width: var(--largeur-max);
+  margin-inline: auto;
+  padding-inline: var(--espace-3);
+}
+
+.contenu {
+  padding-block: var(--espace-4) var(--espace-5);
+}
+
+section + section {
+  margin-top: var(--espace-5);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
